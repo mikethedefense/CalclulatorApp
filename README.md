@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.0.5**
+**Version 1.0.6**
 
 ---
 
@@ -9,7 +9,7 @@ A calculator app using Tkinter and Python
 ---
 
 ## Usage 
-1. Press the first number (you can press multiple in order to get a multi-digit number)
+1. Press the first number (you can press multiple in order to get a multi-digit number or use the decimal button)
 2. Press one of the operators
 3. Press another number (again, you can press multiple in order to get a multi-digit number)
 4. Then, you can either press another operator and repeat the steps, or press the equal sign

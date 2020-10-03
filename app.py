@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import logging
 
-__version__ = '1.05' 
+__version__ = '1.06' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -20,7 +20,7 @@ class CalculatorApp:
         master.geometry("400x700")
         master.resizable(False, False)
        
-       # Entry
+        # Entry
         self.answer_entry = Entry(master, textvariable = self.answer)
         self.answer_entry.grid(column = 2, row = 0, pady = 5, ipady = 10, ipadx = 20) 
         self.answer_entry.get() 
@@ -53,7 +53,11 @@ class CalculatorApp:
                 self.insert_number(n)
             btn = Button(master, text=str(i), command=_handler)
             btn.grid(row=3+i//2, column=i%2, ipadx=25, ipady=25)
-            self.btns.append(btn)  
+            self.btns.append(btn)
+        # Decimal Points
+        btn = Button(master, text=str('.'), command=lambda: self.insert_number('.'))
+        btn.grid(row=12, column=0, ipadx=25, ipady=25)
+        self.btns.append(btn)
     
     # Methods
     def add(self):
@@ -126,6 +130,7 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.operation += "".join([str(i) for i in self.number])
+        logging.debug(self.operation)
         self.number.clear()
         self.answer_entry.delete(0, END)
         try:
@@ -149,8 +154,8 @@ class CalculatorApp:
         """
         Method that will insert a number to the entry
         """
-        self.answer_entry.insert(10000, num) # 1000 digit calculator 
-        self.number.append(num) 
+        self.answer_entry.insert(10000, num) # 10000 digit calculator 
+        self.number.append(num)
         self.plus_button["state"] = NORMAL
         self.subtract_button["state"] = NORMAL
         self.multiply_button["state"] = NORMAL
