@@ -15,3 +15,7 @@ A calculator app using Tkinter and Python
 4. Then, you can either press another operator and repeat the steps, or press the equal sign
 5. Once you get your answer, you must press clear.
 6. To exit the program, you can press the exit button
+
+## Collaborators
+Big thanks to cubeflix for helping me with the code!
+github.com/cubeflix
