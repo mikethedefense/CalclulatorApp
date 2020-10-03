@@ -15,7 +15,7 @@ A calculator app using Tkinter and Python
 4. Then, you can either press another operator and repeat the steps, or press the equal sign
 5. Once you get your answer, you must press clear.
 6. To exit the program, you can press the exit button
-NOTE: You cannot multiply brackets example: ```5(5)```. You must do this: ```5*(5)```. 
+7. NOTE: You cannot multiply brackets example: ```5(5)```. You must do this: ```5*(5)```. 
 
 ---
 
