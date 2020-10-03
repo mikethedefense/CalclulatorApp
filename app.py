@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import logging
 
-__version__ = '1.00' 
+__version__ = '1.05' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -30,15 +30,15 @@ class CalculatorApp:
         self.exit_button.grid(row = 2, column = 0) 
         self.clear_button = Button(master, text = "CE", padx = 20, pady = 20, command = self.clear_entry)
         self.clear_button.grid(row = 2, column = 1)
-        self.plus_button = Button(master, text = "+", command = self.add)
+        self.plus_button = Button(master, text = "+", command = self.add, font = ("Helvetica", 15, "bold"))
         self.plus_button.grid(row = 2, column = 8, ipadx = 25, ipady = 25)
-        self.subtract_button = Button(master, text = "-", command = self.subtract)
+        self.subtract_button = Button(master, text = "-", command = self.subtract, font = ("Helvetica", 15, "bold"))
         self.subtract_button.grid(row = 3, column = 8, ipadx = 25, ipady = 25)
-        self.multiply_button = Button(master, text = "x", command = self.multiply)
+        self.multiply_button = Button(master, text = "x", command = self.multiply, font = ("Helvetica", 15, "bold"))
         self.multiply_button.grid(row = 4, column = 8, ipadx = 25, ipady = 25)
-        self.divide_button = Button(master, text = "÷", command = self.divide)
+        self.divide_button = Button(master, text = "÷", command = self.divide, font = ("Helvetica", 15, "bold"))
         self.divide_button.grid(row = 5, column = 8, ipadx = 25, ipady = 25)
-        self.equals_button = Button(master, text = "=", command = self.equals)
+        self.equals_button = Button(master, text = "=", command = self.equals, font = ("Helvetica", 15, "bold"))
         self.equals_button.grid(row = 6, column = 8, ipadx = 25, ipady = 25)
 
         # Enabled and disabled
@@ -149,7 +149,7 @@ class CalculatorApp:
         """
         Method that will insert a number to the entry
         """
-        self.answer_entry.insert(10000, num)
+        self.answer_entry.insert(10000, num) # 1000 digit calculator 
         self.number.append(num) 
         self.plus_button["state"] = NORMAL
         self.subtract_button["state"] = NORMAL
