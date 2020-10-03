@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.0.0**
+**Version 1.0.5**
 
 ---
 
@@ -16,6 +16,13 @@ A calculator app using Tkinter and Python
 5. Once you get your answer, you must press clear.
 6. To exit the program, you can press the exit button
 
+---
+
 ## Collaborators
 Big thanks to cubeflix for helping me with the code!
 github.com/cubeflix
+
+---
+
+## Updates
+Update version 1.05: Fixed the font for the operators, and made them readable. Before, they were too small 
