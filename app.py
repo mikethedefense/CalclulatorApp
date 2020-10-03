@@ -38,8 +38,10 @@ class CalculatorApp:
         self.multiply_button.grid(row = 4, column = 8, ipadx = 25, ipady = 25)
         self.divide_button = Button(master, text = "÷", command = self.divide, font = ("Helvetica", 15, "bold"))
         self.divide_button.grid(row = 5, column = 8, ipadx = 25, ipady = 25)
+        self.power_button = Button(master, text = "^", command = self.power, font = ("Helvetica", 15, "bold"))
+        self.power_button.grid(row = 6, column = 8, ipadx = 25, ipady = 25)
         self.equals_button = Button(master, text = "=", command = self.equals, font = ("Helvetica", 15, "bold"))
-        self.equals_button.grid(row = 6, column = 8, ipadx = 25, ipady = 25)
+        self.equals_button.grid(row = 7, column = 8, ipadx = 25, ipady = 25)
 
         # Enabled and disabled
         self.plus_button["state"] = DISABLED
@@ -113,6 +115,21 @@ class CalculatorApp:
         self.number.clear()
         self.answer_entry.delete(0, END)
         self.operation += '/'
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        logging.debug(self.operation)
+        
+    def power(self):
+        """
+        Method that will raise numbers to powers
+        """
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.answer_entry.delete(0, END)
+        self.operation += '**'
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
