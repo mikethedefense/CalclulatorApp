@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.10**
+**Version 1.15**
 
 ---
 
@@ -16,6 +16,7 @@ A calculator app using Tkinter and Python
 5. Once you get your answer, you must press clear.
 6. To exit the program, you can press the exit button
 7. NOTE: You cannot multiply brackets example: ```5(5)```. You must do this: ```5*(5)```. 
+8. NOTE: Always end your sqrt and trig functions with a bracket! Example: ```sin(5)``` ```sqrt(5)```
 
 ---
 
@@ -28,3 +29,4 @@ github.com/cubeflix
 ## Updates
 1. Update version 1.05: Fixed the font for the operators, and made them readable. Before, they were too small.
 2. Update version 1.10: Added brackets and decimal points. 
+3. Update version 1.15: Added sin function and sqrt
