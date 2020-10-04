@@ -244,6 +244,11 @@ class CalculatorApp:
         self.number.clear()
         self.operation += 'math.pi'
         self.equals_button["state"] = NORMAL
+        self.plus_button["state"] = NORMAL
+        self.subtract_button["state"] = NORMAL
+        self.multiply_button["state"] = NORMAL
+        self.divide_button["state"] = NORMAL
+        self.power_button["state"] = NORMAL
         logging.debug(self.operation)
     
     def e(self):
@@ -252,6 +257,11 @@ class CalculatorApp:
         self.number.clear()
         self.operation += 'math.e'
         self.equals_button["state"] = NORMAL
+        self.plus_button["state"] = NORMAL
+        self.subtract_button["state"] = NORMAL
+        self.multiply_button["state"] = NORMAL
+        self.divide_button["state"] = NORMAL
+        self.power_button["state"] = NORMAL
         logging.debug(self.operation)
 
 # Start Program
