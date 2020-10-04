@@ -169,6 +169,7 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = DISABLED
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
         logging.debug(self.operation)
@@ -198,8 +199,14 @@ class CalculatorApp:
             del self.number[-1]
             logging.debug(self.number)
         else:
-            self.operation = self.operation[:len(self.operation)-1]
+            self.operation = self.operation[:-1]
         self.answer_entry.delete(len(self.answer_entry.get())-1, END)
+        self.plus_button["state"] = NORMAL
+        self.subtract_button["state"] = NORMAL
+        self.multiply_button["state"] = NORMAL
+        self.divide_button["state"] = NORMAL
+        self.equals_button["state"] = NORMAL
+        self.power_button["state"] = NORMAL
     
     def insert_number(self, num):
         """
@@ -213,6 +220,7 @@ class CalculatorApp:
         self.divide_button["state"] = NORMAL
         self.equals_button["state"] = NORMAL
         self.power_button["state"] = NORMAL
+        self.delete_button["state"] = NORMAL
         logging.debug(self.number) 
     
     def power(self):
@@ -245,8 +253,43 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
         
+    def pie(self):
+        """
+        Method for constant pi
+        """
+        self.answer_entry.insert(10000, "π")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.pi'
+        self.equals_button["state"] = NORMAL
+        self.plus_button["state"] = NORMAL
+        self.subtract_button["state"] = NORMAL
+        self.multiply_button["state"] = NORMAL
+        self.divide_button["state"] = NORMAL
+        self.power_button["state"] = NORMAL
+        self.delete_button["state"] = NORMAL
+        logging.debug(self.operation)
+    
+    def e(self):
+        """
+        Method for constant e
+        """
+        self.answer_entry.insert(10000, "e")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.e'
+        self.equals_button["state"] = NORMAL
+        self.plus_button["state"] = NORMAL
+        self.subtract_button["state"] = NORMAL
+        self.multiply_button["state"] = NORMAL
+        self.divide_button["state"] = NORMAL
+        self.power_button["state"] = NORMAL
+        self.delete_button["state"] = NORMAL
+        logging.debug(self.operation)
+    
     def sin(self):
         """
         Method that will sin numbers
@@ -261,35 +304,13 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
-        logging.debug(self.operation)
-    
-    def pie(self):
-        self.answer_entry.insert(10000, "π")
-        self.operation += "".join([str(i) for i in self.number])
-        self.number.clear()
-        self.operation += 'math.pi'
-        self.equals_button["state"] = NORMAL
-        self.plus_button["state"] = NORMAL
-        self.subtract_button["state"] = NORMAL
-        self.multiply_button["state"] = NORMAL
-        self.divide_button["state"] = NORMAL
-        self.power_button["state"] = NORMAL
-        logging.debug(self.operation)
-    
-    def e(self):
-        self.answer_entry.insert(10000, "e")
-        self.operation += "".join([str(i) for i in self.number])
-        self.number.clear()
-        self.operation += 'math.e'
-        self.equals_button["state"] = NORMAL
-        self.plus_button["state"] = NORMAL
-        self.subtract_button["state"] = NORMAL
-        self.multiply_button["state"] = NORMAL
-        self.divide_button["state"] = NORMAL
-        self.power_button["state"] = NORMAL
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
     
     def cosine(self):
+        """
+        Method for cosine trig function
+        """
         self.answer_entry.insert(10000, "cos(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
@@ -300,9 +321,13 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
     
     def tangent(self):
+        """
+        Method for tangent trig function
+        """
         self.answer_entry.insert(10000, "tan(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
@@ -313,9 +338,13 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
     
     def inverse_sine(self):
+        """
+        Method for inverse sine trig function
+        """
         self.answer_entry.insert(10000, "sin-1(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
@@ -326,10 +355,13 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
-        
-
+    
     def inverse_cosine(self):
+        """
+        Method for inverse cosine trig function
+        """
         self.answer_entry.insert(10000, "cos-1(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
@@ -340,9 +372,13 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
 
     def inverse_tangent(self):
+        """
+        Method for inverse tangent trig function
+        """
         self.answer_entry.insert(10000, "tan-1(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
@@ -353,9 +389,13 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
     
     def log(self):
+        """
+        Method that will deal with logs
+        """
         self.answer_entry.insert(10000, "log(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
@@ -366,6 +406,7 @@ class CalculatorApp:
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
+        self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
         
 # Start Program
