@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.17**
+**Version 1.20**
 
 ---
 
