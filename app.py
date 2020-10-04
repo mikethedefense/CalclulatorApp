@@ -3,7 +3,7 @@ from tkinter import messagebox
 import logging
 import math
 
-__version__ = '1.15' 
+__version__ = '1.17' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -47,8 +47,11 @@ class CalculatorApp:
         self.power_button.grid(row = 2, column = 9, ipadx = 25, ipady = 25)
         self.sqrt_button = Button(master, text = "√", command = self.sqrt, font = ("Helvetica", 15, "bold"))
         self.sqrt_button.grid(row = 3, column = 9, ipadx = 25, ipady = 25)
-
-
+        self.pi_button = Button(master, text = "π", command = self.pie, font = ("Helvetica", 15, "bold"))
+        self.pi_button.grid(row = 7, column = 8, ipadx = 15, ipady = 25)
+        self.e_button = Button(master, text = "e", command = self.e, font = ("Helvetica", 15, "bold")) 
+        self.e_button.grid(row = 7, column = 9, ipadx = 15, ipady = 25)
+        
         for i in range(10):
             def _handler(n=i): 
                 self.insert_number(n)
@@ -234,7 +237,23 @@ class CalculatorApp:
         self.equals_button["state"] = DISABLED
         self.power_button["state"] = DISABLED
         logging.debug(self.operation)
-       
+    
+    def pie(self):
+        self.answer_entry.insert(10000, "π")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.pi'
+        self.equals_button["state"] = NORMAL
+        logging.debug(self.operation)
+    
+    def e(self):
+        self.answer_entry.insert(10000, "e")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.e'
+        self.equals_button["state"] = NORMAL
+        logging.debug(self.operation)
+
 # Start Program
 root = Tk()
 logging.debug("Program Started") 
