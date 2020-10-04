@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.20**
+**Version 1.30**
 
 ---
 
@@ -29,6 +29,7 @@ github.com/cubeflix
 ## Updates
 1. Update version 1.05: Fixed the font for the operators, and made them readable. Before, they were too small.
 2. Update version 1.10: Added brackets and decimal points. 
-3. Update version 1.15: Added sin function and sqrt, and fixed the exit bug
-4. Update version 1.17: Added pi and e coeficients
-5. Update version 1.20: Added cosine, tangent, inverse trig functions and logarithms
+3. Update version 1.15: Added sin function and sqrt, and fixed the exit bug.
+4. Update version 1.17: Added pi and e coeficients.
+5. Update version 1.20: Added cosine, tangent, inverse trig functions and logarithms.
+6. Update version 1.30: Added a delete button, and adjusted minor issues.
