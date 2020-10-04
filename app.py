@@ -1,8 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 import logging
+import math
 
-__version__ = '1.10' 
+__version__ = '1.15' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -17,7 +18,7 @@ class CalculatorApp:
 
         # Title and Geometry
         master.title("Calculator")
-        master.geometry("400x900")
+        master.geometry("470x900")
         master.resizable(False, False)
        
        # Entry
@@ -26,7 +27,7 @@ class CalculatorApp:
         self.answer_entry.get() 
         
         # Buttons
-        self.exit_button = Button(master, text = "Exit", pady = 20, padx = 20, command = master.quit) 
+        self.exit_button = Button(master, text = "Exit", pady = 20, padx = 20, command = master.destroy) 
         self.exit_button.grid(row = 2, column = 0) 
         self.clear_button = Button(master, text = "CE", padx = 20, pady = 20, command = self.clear_entry)
         self.clear_button.grid(row = 2, column = 1)
@@ -38,10 +39,15 @@ class CalculatorApp:
         self.multiply_button.grid(row = 4, column = 8, ipadx = 25, ipady = 25)
         self.divide_button = Button(master, text = "÷", command = self.divide, font = ("Helvetica", 15, "bold"))
         self.divide_button.grid(row = 5, column = 8, ipadx = 25, ipady = 25)
+        self.sin_button = Button(master, text = "sin", command = self.sin, font = ("Helvetica", 15, "bold"))
+        self.sin_button.grid(row = 6, column = 8, ipadx = 15, ipady = 25)
         self.equals_button = Button(master, text = "=", command = self.equals, font = ("Helvetica", 15, "bold"))
-        self.equals_button.grid(row = 9, column = 8, ipadx = 25, ipady = 25)
+        self.equals_button.grid(row = 6, column = 9, ipadx = 25, ipady = 25)
         self.power_button = Button(master, text = "^", command = self.power, font = ("Helvetica", 15, "bold"))
-        self.power_button.grid(row = 6, column = 8, ipadx = 25, ipady = 25)
+        self.power_button.grid(row = 2, column = 9, ipadx = 25, ipady = 25)
+        self.sqrt_button = Button(master, text = "√", command = self.sqrt, font = ("Helvetica", 15, "bold"))
+        self.sqrt_button.grid(row = 3, column = 9, ipadx = 25, ipady = 25)
+
 
         for i in range(10):
             def _handler(n=i): 
@@ -57,9 +63,9 @@ class CalculatorApp:
 
         # Brackets
         left_bracket_button = Button(master, text = "(", command = lambda:self.insert_number('('), font = ("Helvetica", 15, "bold"))
-        left_bracket_button.grid(row = 7, column = 8, ipadx = 25, ipady = 25)
+        left_bracket_button.grid(row = 4, column = 9, ipadx = 25, ipady = 25)
         right_bracket_button = Button(master, text = ")", command = lambda: self.insert_number(')'), font = ("Helvetica", 15, "bold"))
-        right_bracket_button.grid(row = 8, column = 8, ipadx = 25, ipady = 25)
+        right_bracket_button.grid(row = 5, column = 9, ipadx = 25, ipady = 25)
         self.btns.append(left_bracket_button)
         self.btns.append(right_bracket_button) 
 
@@ -108,7 +114,7 @@ class CalculatorApp:
         """
         Method that will multiply numbers
         """
-        self.answer_entry.insert(100000, "x")
+        self.answer_entry.insert(100000, "×")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
         self.operation += '*'
@@ -189,6 +195,38 @@ class CalculatorApp:
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
         self.operation += '**'
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+        
+    def sqrt(self):
+        """
+        Method that will square root numbers
+        """
+        self.answer_entry.insert(10000, "√")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.sqrt'
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+        
+    def sin(self):
+        """
+        Method that will sin numbers
+        """
+        self.answer_entry.insert(10000, "sin")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.sin'
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
