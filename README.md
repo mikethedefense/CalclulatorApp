@@ -31,3 +31,4 @@ github.com/cubeflix
 2. Update version 1.10: Added brackets and decimal points. 
 3. Update version 1.15: Added sin function and sqrt, and fixed the exit bug
 4. Update version 1.17: Added pi and e coeficients
+5. Update version 1.20: Added cosine, tangent, inverse trig functions and logarithms
