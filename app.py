@@ -31,6 +31,8 @@ class CalculatorApp:
         self.exit_button.grid(row = 2, column = 0) 
         self.clear_button = Button(master, text = "CE", padx = 20, pady = 20, command = self.clear_entry)
         self.clear_button.grid(row = 2, column = 1)
+        self.delete_button = Button(master, text = "Del", padx = 20, pady = 20, command = self.delete_entry)
+        self.delete_button.grid(row = 2, column = 2, sticky=W)
         self.plus_button = Button(master, text = "+", command = self.add, font = ("Helvetica", 15, "bold"))
         self.plus_button.grid(row = 2, column = 8, ipadx = 25, ipady = 25)
         self.subtract_button = Button(master, text = "-", command = self.subtract, font = ("Helvetica", 15, "bold"))
@@ -186,7 +188,18 @@ class CalculatorApp:
         """
         self.answer_entry.delete(0, END)
         self.operation = ""
-        self.number.clear() 
+        self.number.clear()
+        
+    def delete_entry(self): 
+        """
+        Method that will delete numbers in the entry
+        """
+        if len(self.number) > 0:
+            del self.number[-1]
+            logging.debug(self.number)
+        else:
+            self.operation = self.operation[:len(self.operation)-1]
+        self.answer_entry.delete(len(self.answer_entry.get())-1, END)
     
     def insert_number(self, num):
         """
