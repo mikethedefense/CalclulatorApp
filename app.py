@@ -3,7 +3,7 @@ from tkinter import messagebox
 import logging
 import math
 
-__version__ = '1.17' 
+__version__ = '1.20' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -18,7 +18,7 @@ class CalculatorApp:
 
         # Title and Geometry
         master.title("Calculator")
-        master.geometry("470x900")
+        master.geometry("800x900")
         master.resizable(False, False)
        
        # Entry
@@ -39,18 +39,30 @@ class CalculatorApp:
         self.multiply_button.grid(row = 4, column = 8, ipadx = 25, ipady = 25)
         self.divide_button = Button(master, text = "÷", command = self.divide, font = ("Helvetica", 15, "bold"))
         self.divide_button.grid(row = 5, column = 8, ipadx = 25, ipady = 25)
-        self.sin_button = Button(master, text = "sin", command = self.sin, font = ("Helvetica", 15, "bold"))
-        self.sin_button.grid(row = 6, column = 8, ipadx = 15, ipady = 25)
         self.equals_button = Button(master, text = "=", command = self.equals, font = ("Helvetica", 15, "bold"))
-        self.equals_button.grid(row = 6, column = 9, ipadx = 25, ipady = 25)
+        self.equals_button.grid(row = 9, column = 9, ipadx = 25, ipady = 25)
         self.power_button = Button(master, text = "^", command = self.power, font = ("Helvetica", 15, "bold"))
         self.power_button.grid(row = 2, column = 9, ipadx = 25, ipady = 25)
         self.sqrt_button = Button(master, text = "√", command = self.sqrt, font = ("Helvetica", 15, "bold"))
         self.sqrt_button.grid(row = 3, column = 9, ipadx = 25, ipady = 25)
         self.pi_button = Button(master, text = "π", command = self.pie, font = ("Helvetica", 15, "bold"))
-        self.pi_button.grid(row = 7, column = 8, ipadx = 25, ipady = 25)
+        self.pi_button.grid(row = 8, column = 8, ipadx = 25, ipady = 25)
         self.e_button = Button(master, text = "e", command = self.e, font = ("Helvetica", 15, "bold")) 
-        self.e_button.grid(row = 7, column = 9, ipadx = 25, ipady = 25)
+        self.e_button.grid(row = 8, column = 9, ipadx = 25, ipady = 25)
+        self.sin_button = Button(master, text = "sin", command = self.sin, font = ("Helvetica", 15, "bold"))
+        self.sin_button.grid(row = 6, column = 8, ipadx = 15, ipady = 25)
+        self.cosine_button = Button(master, text = "cos", command = self.cosine, font = ("Helvetica", 15, "bold")) 
+        self.cosine_button.grid(row = 6, column = 9, ipadx = 25, ipady = 25)
+        self.tangent_button = Button(master, text = "tan", command = self.cosine, font = ("Helvetica", 15, "bold")) 
+        self.tangent_button.grid(row = 6, column = 10, ipadx = 25, ipady = 25)
+        self.inverse_sine_button = Button(master, text = "sin-1", command = self.inverse_sine, font = ("Helvetica", 15, "bold"))
+        self.inverse_sine_button.grid(row = 7, column = 8, ipadx = 15, ipady = 25)
+        self.inverse_cosine_button = Button(master, text = "cos-1", command = self.inverse_cosine, font = ("Helvetica", 15, "bold"))
+        self.inverse_cosine_button.grid(row = 7, column = 9, ipadx = 15, ipady = 25)
+        self.inverse_tangent_button = Button(master, text = "tan-1", command = self.inverse_tangent, font = ("Helvetica", 15, "bold"))
+        self.inverse_tangent_button.grid(row = 7, column = 10, ipadx = 15, ipady = 25)
+        self.log_button = Button(master, text = "log", command = self.log, font = ("Helvetica", 15, "bold"))
+        self.log_button.grid(row = 9, column = 8, ipadx = 25, ipady = 25)
         
         for i in range(10):
             def _handler(n=i): 
@@ -263,7 +275,86 @@ class CalculatorApp:
         self.divide_button["state"] = NORMAL
         self.power_button["state"] = NORMAL
         logging.debug(self.operation)
+    
+    def cosine(self):
+        self.answer_entry.insert(10000, "cos(")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.cos('
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+    
+    def tangent(self):
+        self.answer_entry.insert(10000, "tan(")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.tan('
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+    
+    def inverse_sine(self):
+        self.answer_entry.insert(10000, "sin-1(")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.asin('
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+        
 
+    def inverse_cosine(self):
+        self.answer_entry.insert(10000, "cos-1(")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.acos('
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+
+    def inverse_tangent(self):
+        self.answer_entry.insert(10000, "tan-1(")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.atan('
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+    
+    def log(self):
+        self.answer_entry.insert(10000, "log(")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        self.operation += 'math.log10('
+        self.plus_button["state"] = DISABLED
+        self.subtract_button["state"] = DISABLED
+        self.multiply_button["state"] = DISABLED
+        self.divide_button["state"] = DISABLED
+        self.equals_button["state"] = DISABLED
+        self.power_button["state"] = DISABLED
+        logging.debug(self.operation)
+        
 # Start Program
 root = Tk()
 logging.debug("Program Started") 
