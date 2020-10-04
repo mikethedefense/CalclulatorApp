@@ -29,4 +29,4 @@ github.com/cubeflix
 ## Updates
 1. Update version 1.05: Fixed the font for the operators, and made them readable. Before, they were too small.
 2. Update version 1.10: Added brackets and decimal points. 
-3. Update version 1.15: Added sin function and sqrt
+3. Update version 1.15: Added sin function and sqrt, and fixed the exit bug
