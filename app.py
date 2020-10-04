@@ -3,7 +3,7 @@ from tkinter import messagebox
 import logging
 import math
 
-__version__ = '1.20' 
+__version__ = '1.30' 
 
 logging.basicConfig(level = logging.DEBUG)
 
