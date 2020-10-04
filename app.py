@@ -207,10 +207,10 @@ class CalculatorApp:
         """
         Method that will square root numbers
         """
-        self.answer_entry.insert(10000, "√")
+        self.answer_entry.insert(10000, "√(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.sqrt'
+        self.operation += 'math.sqrt('
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -223,10 +223,10 @@ class CalculatorApp:
         """
         Method that will sin numbers
         """
-        self.answer_entry.insert(10000, "sin")
+        self.answer_entry.insert(10000, "sin(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.sin'
+        self.operation += 'math.sin('
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
