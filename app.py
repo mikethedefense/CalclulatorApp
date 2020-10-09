@@ -3,7 +3,7 @@ from tkinter import messagebox
 import logging
 import math
 
-__version__ = '1.40' 
+__version__ = '1.45' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -70,6 +70,8 @@ class CalculatorApp:
         self.inverse_tangent_button.grid(row = 7, column = 10, ipadx = 15, ipady = 25)
         self.log_button = Button(master, text = "log", command = self.log, font = ("Helvetica", 15, "bold"))
         self.log_button.grid(row = 9, column = 8, ipadx = 25, ipady = 25)
+        self.ans_button = Button(master, text = "Ans", command = self.ans, font = ("Helvetica", 15, "bold"))
+        self.ans_button.grid(row = 8, column = 1, ipadx = 25, ipady = 25)
         
         for i in range(10):
             def _handler(n=i): 
@@ -179,6 +181,26 @@ class CalculatorApp:
         self.answer_entry.insert(0, self.answer)
         
         logging.debug(self.answer) 
+    
+    def ans(self):
+        """
+        Method that takes the previous answer and does something with it on the screen
+        """
+        self.answer_entry.insert(10000, "ans")
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += '*'
+            self.operation += str(self.answer) 
+        else:
+            self.operation += str(self.answer) 
+        self.plus_button["state"] = NORMAL
+        self.subtract_button["state"] = NORMAL
+        self.multiply_button["state"] = NORMAL
+        self.divide_button["state"] = NORMAL
+        self.equals_button["state"] = NORMAL
+        self.power_button["state"] = NORMAL
+        self.delete_button["state"] = NORMAL
 
     def clear_entry(self): 
         """
