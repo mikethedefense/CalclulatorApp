@@ -3,7 +3,7 @@ from tkinter import messagebox
 import logging
 import math
 
-__version__ = '1.30' 
+__version__ = '1.40' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -15,7 +15,8 @@ class CalculatorApp:
         self.number = []
         self.operation = ''
         self.btns = []
-
+        self.multiply_stuff = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","math.pi","math.e", ")") # Stuff you can multiply without the multiply sign
+        
         # Title and Geometry
         master.title("Calculator")
         master.geometry("800x900")
@@ -43,6 +44,10 @@ class CalculatorApp:
         self.divide_button.grid(row = 5, column = 8, ipadx = 25, ipady = 25)
         self.equals_button = Button(master, text = "=", command = self.equals, font = ("Helvetica", 15, "bold"))
         self.equals_button.grid(row = 9, column = 9, ipadx = 25, ipady = 25)
+        self.left_bracket_button = Button(master, text = "(", command = lambda: self.insert_bracket("("), font = ("Helvetica", 15, "bold"))
+        self.left_bracket_button.grid(row = 4, column = 9, ipadx = 25, ipady = 25)
+        self.right_bracket_button = Button(master, text = ")", command = lambda: self.insert_bracket(")"), font = ("Helvetica", 15, "bold"))
+        self.right_bracket_button.grid(row = 5, column = 9, ipadx = 25, ipady = 25)
         self.power_button = Button(master, text = "^", command = self.power, font = ("Helvetica", 15, "bold"))
         self.power_button.grid(row = 2, column = 9, ipadx = 25, ipady = 25)
         self.sqrt_button = Button(master, text = "√", command = self.sqrt, font = ("Helvetica", 15, "bold"))
@@ -74,18 +79,10 @@ class CalculatorApp:
             self.btns.append(btn)  
         
         # Decimal Points
-        btn = Button(master, text=str('.'), command=lambda: self.insert_number('.'), font = ("Helvetica", 15, "bold"))
+        btn = Button(master, text=str('.'), command=lambda: self.insert_number('.'), font = ("Helvetica", 15, "bold")) 
         btn.grid(row=8, column=0, ipadx=25, ipady=25)
-        self.btns.append(btn)
-
-        # Brackets
-        left_bracket_button = Button(master, text = "(", command = lambda:self.insert_number('('), font = ("Helvetica", 15, "bold"))
-        left_bracket_button.grid(row = 4, column = 9, ipadx = 25, ipady = 25)
-        right_bracket_button = Button(master, text = ")", command = lambda: self.insert_number(')'), font = ("Helvetica", 15, "bold"))
-        right_bracket_button.grid(row = 5, column = 9, ipadx = 25, ipady = 25)
-        self.btns.append(left_bracket_button)
-        self.btns.append(right_bracket_button) 
-
+        self.btns.append(btn) 
+        
         # Enabled and disabled
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
@@ -213,7 +210,11 @@ class CalculatorApp:
         Method that will insert a number to the entry
         """
         self.answer_entry.insert(10000, num)
-        self.number.append(num) 
+        if self.operation.endswith(self.multiply_stuff) and not len(self.number) > 0: 
+            self.number.append("*") 
+            self.number.append(num) 
+        else:
+            self.number.append(num)
         self.plus_button["state"] = NORMAL
         self.subtract_button["state"] = NORMAL
         self.multiply_button["state"] = NORMAL
@@ -222,6 +223,20 @@ class CalculatorApp:
         self.power_button["state"] = NORMAL
         self.delete_button["state"] = NORMAL
         logging.debug(self.number) 
+        logging.debug(self.operation)
+    
+    def insert_bracket(self, bracket):
+        """
+        Method that deals with brackets
+        """
+        self.answer_entry.insert(10000, bracket)
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear()
+        if self.operation.endswith(self.multiply_stuff) and bracket == "(": 
+            self.operation += "*" 
+            self.operation += bracket 
+        else:
+            self.operation += bracket
     
     def power(self):
         """
@@ -246,7 +261,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "√(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.sqrt('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.sqrt(" 
+        else:
+            self.operation += "math.sqrt(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -263,7 +281,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "π")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.pi'
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.pi" 
+        else:
+            self.operation += "math.pi" 
         self.equals_button["state"] = NORMAL
         self.plus_button["state"] = NORMAL
         self.subtract_button["state"] = NORMAL
@@ -280,7 +301,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "e")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.e'
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.e" 
+        else:
+            self.operation += "math.e" 
         self.equals_button["state"] = NORMAL
         self.plus_button["state"] = NORMAL
         self.subtract_button["state"] = NORMAL
@@ -297,7 +321,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "sin(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.sin('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.sin(" 
+        else:
+            self.operation += "math.sin(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -314,7 +341,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "cos(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.cos('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.cos(" 
+        else:
+            self.operation += "math.cos(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -331,7 +361,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "tan(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.tan('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.tan(" 
+        else:
+            self.operation += "math.tan(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -348,7 +381,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "sin-1(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.asin('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.asin(" 
+        else:
+            self.operation += "math.asin(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -365,7 +401,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "cos-1(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.acos('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.acos(" 
+        else:
+            self.operation += "math.acos(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -382,7 +421,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "tan-1(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.atan('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.atan(" 
+        else:
+            self.operation += "math.atan(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
@@ -399,7 +441,10 @@ class CalculatorApp:
         self.answer_entry.insert(10000, "log(")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear()
-        self.operation += 'math.log10('
+        if self.operation.endswith(self.multiply_stuff): 
+            self.operation += "*math.log10(" 
+        else:
+            self.operation += "math.log10(" 
         self.plus_button["state"] = DISABLED
         self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
