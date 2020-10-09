@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.40**
+**Version 1.45**
 
 ---
 
@@ -33,3 +33,4 @@ github.com/cubeflix
 5. Update version 1.20: Added cosine, tangent, inverse trig functions and logarithms.
 6. Update version 1.30: Added a delete button, and adjusted minor issues.
 7. Update version 1.40: Added bracket multiplication and multiplication without the "x" sign
+6. Update version 1.45: Added a previous answer function
