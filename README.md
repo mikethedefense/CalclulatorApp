@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.30**
+**Version 1.40**
 
 ---
 
@@ -15,8 +15,7 @@ A calculator app using Tkinter and Python
 4. Then, you can either press another operator and repeat the steps, or press the equal sign
 5. Once you get your answer, you must press clear.
 6. To exit the program, you can press the exit button
-7. NOTE: You cannot multiply brackets example: ```5(5)```. You must do this: ```5*(5)```. 
-8. NOTE: Always end your sqrt and trig functions with a bracket! Example: ```sin(5)``` ```sqrt(5)```
+7. NOTE: Always end your sqrt and trig functions with a bracket! Example: ```sin(5)``` ```sqrt(5)```
 
 ---
 
@@ -33,3 +32,4 @@ github.com/cubeflix
 4. Update version 1.17: Added pi and e coeficients.
 5. Update version 1.20: Added cosine, tangent, inverse trig functions and logarithms.
 6. Update version 1.30: Added a delete button, and adjusted minor issues.
+7. Update version 1.40: Added bracket multiplication and multiplication without the "x" sign
