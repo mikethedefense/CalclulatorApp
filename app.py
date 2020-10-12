@@ -487,11 +487,14 @@ class CalculatorApp:
         Method that will add the unknown x into the expression
         """
         self.answer_entry.insert(10000, "x")
-        self.number.clear()
+        self.operation += "".join([str(i) for i in self.number])
+        self.number.clear() 
         if self.operation.endswith(self.multiply_stuff):
-         self.operation += "*self.x"
+            self.operation += "*self.x"
         else:
             self.operation += "self.x"
+        
+        logging.debug(self.operation)
 
 # Start Program
 root = Tk()
