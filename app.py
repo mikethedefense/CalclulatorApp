@@ -491,7 +491,7 @@ class CalculatorApp:
         if self.operation.endswith(self.multiply_stuff):
          self.operation += "*self.x"
         else:
-            self.operatopm += "self.x"
+            self.operation += "self.x"
 
 # Start Program
 root = Tk()
