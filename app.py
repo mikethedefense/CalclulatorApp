@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import logging
 import math
+import sympy
 
 __version__ = '1.45' 
 
@@ -15,7 +16,8 @@ class CalculatorApp:
         self.number = []
         self.operation = ''
         self.btns = []
-        self.multiply_stuff = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","math.pi","math.e", ")") # Stuff you can multiply without the multiply sign
+        self.multiply_stuff = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","math.pi","math.e", ")", "self.x") # Stuff you can multiply without the multiply sign
+        self.x = sympy.Symbol('x')
         
         # Title and Geometry
         master.title("Calculator")
@@ -78,7 +80,9 @@ class CalculatorApp:
                 self.insert_number(n)
             btn = Button(master, text=str(i), command=_handler)
             btn.grid(row=3+i//2, column=i%2, ipadx=25, ipady=25)
-            self.btns.append(btn)  
+            self.btns.append(btn)
+        self.x_button = Button(master, text='x', command = self.insert_x)
+        self.x_button.grid(row=3, column=2, ipadx=25, ipady=25, sticky = W)
         
         # Decimal Points
         btn = Button(master, text=str('.'), command=lambda: self.insert_number('.'), font = ("Helvetica", 15, "bold")) 
@@ -174,7 +178,7 @@ class CalculatorApp:
         logging.debug(self.operation)
         self.answer_entry.delete(0, END)
         try:
-            self.answer = eval(self.operation)
+            self.answer = eval("sympy.expand("+self.operation+")")
         except:
             self.answer = 'Invalid Syntax'
             messagebox.showerror("Error", self.answer) 
@@ -475,6 +479,13 @@ class CalculatorApp:
         self.power_button["state"] = DISABLED
         self.delete_button["state"] = NORMAL
         logging.debug(self.operation)
+
+    def insert_x(self):
+        """
+        Method that will add the unknown x into the expression
+        """
+        self.operation += "self.x"
+        self.answer_entry.insert(10000, "x")
         
 # Start Program
 root = Tk()
