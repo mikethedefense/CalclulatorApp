@@ -1,5 +1,5 @@
 # CalclulatorApp
-**Version 1.45**
+**Version 1.50**
 
 ---
 
@@ -16,6 +16,7 @@ A calculator app using Tkinter and Python
 5. Once you get your answer, you must press clear.
 6. To exit the program, you can press the exit button
 7. NOTE: Always end your sqrt and trig functions with a bracket! Example: ```sin(5)``` ```sqrt(5)```
+8. Simplifying algebraic equations is possible just press the ```x``` sign
 
 ---
 
@@ -34,3 +35,4 @@ github.com/cubeflix
 6. Update version 1.30: Added a delete button, and adjusted minor issues.
 7. Update version 1.40: Added bracket multiplication and multiplication without the "x" sign
 6. Update version 1.45: Added a previous answer function
+7. Update version 1.50: Added a algebra to the calculator
