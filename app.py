@@ -74,7 +74,7 @@ class CalculatorApp:
         self.log_button.grid(row = 9, column = 8, ipadx = 25, ipady = 25)
         self.ans_button = Button(master, text = "Ans", command = self.ans, font = ("Helvetica", 15, "bold"))
         self.ans_button.grid(row = 8, column = 1, ipadx = 25, ipady = 25)
-        self.x_button = Button(master, text='x', command = self.insert_x)
+        self.x_button = Button(master, text='𝑥', command = self.insert_x)
         self.x_button.grid(row=3, column=2, ipadx=25, ipady=25, sticky = W)
         
         for i in range(10):
@@ -486,7 +486,7 @@ class CalculatorApp:
         """
         Method that will add the unknown x into the expression
         """
-        self.answer_entry.insert(10000, "x")
+        self.answer_entry.insert(10000, "𝑥")
         self.operation += "".join([str(i) for i in self.number])
         self.number.clear() 
         if self.operation.endswith(self.multiply_stuff):
