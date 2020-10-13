@@ -4,7 +4,7 @@ import logging
 import math
 import sympy
 
-__version__ = '1.45' 
+__version__ = '1.50' 
 
 logging.basicConfig(level = logging.DEBUG)
 
