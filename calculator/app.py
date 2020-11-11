@@ -4,7 +4,7 @@ import logging
 import math
 import sympy
 
-__version__ = '1.50' 
+__version__ = '1.51' 
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -93,7 +93,7 @@ class CalculatorApp:
         
         # Enabled and disabled
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
+        self.subtract_button["state"] = NORMAL
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -109,7 +109,6 @@ class CalculatorApp:
         self.number.clear()
         self.operation += '+'
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -125,7 +124,6 @@ class CalculatorApp:
         self.number.clear()
         self.operation += '-'
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -141,7 +139,6 @@ class CalculatorApp:
         self.number.clear()
         self.operation += '*'
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = NORMAL
@@ -157,7 +154,6 @@ class CalculatorApp:
         self.number.clear()
         self.operation += '/'
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -169,7 +165,6 @@ class CalculatorApp:
         Method that will print the answer value number out on the calculator and in logging
         """
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -275,7 +270,6 @@ class CalculatorApp:
         self.number.clear()
         self.operation += '**'
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -294,7 +288,6 @@ class CalculatorApp:
         else:
             self.operation += "math.sqrt(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -354,7 +347,6 @@ class CalculatorApp:
         else:
             self.operation += "math.sin(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -374,7 +366,6 @@ class CalculatorApp:
         else:
             self.operation += "math.cos(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -394,7 +385,6 @@ class CalculatorApp:
         else:
             self.operation += "math.tan(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -414,7 +404,6 @@ class CalculatorApp:
         else:
             self.operation += "math.asin(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -434,7 +423,6 @@ class CalculatorApp:
         else:
             self.operation += "math.acos(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -454,7 +442,6 @@ class CalculatorApp:
         else:
             self.operation += "math.atan(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
@@ -474,7 +461,6 @@ class CalculatorApp:
         else:
             self.operation += "math.log10(" 
         self.plus_button["state"] = DISABLED
-        self.subtract_button["state"] = DISABLED
         self.multiply_button["state"] = DISABLED
         self.divide_button["state"] = DISABLED
         self.equals_button["state"] = DISABLED
