@@ -36,3 +36,4 @@ github.com/cubeflix
 7. Update version 1.40: Added bracket multiplication and multiplication without the "x" sign
 6. Update version 1.45: Added a previous answer function
 7. Update version 1.50: Added a algebra to the calculator
+8. Update version 1.51: Fixed negative number problem
